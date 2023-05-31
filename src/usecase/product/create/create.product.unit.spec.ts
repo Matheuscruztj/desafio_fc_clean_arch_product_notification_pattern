@@ -58,4 +58,18 @@ describe("Unit test create product use case", () => {
             new Error("product: Price must be greater than zero")
         );
     });
+
+    it("should thrown an error when id and name are missing", async() => {
+        const productRepository = MockRepository();
+        const productCreateUseCase = new CreateProductUseCase(productRepository);
+
+        let input = {
+            name: "",
+            price: -1,
+        };
+
+        await expect(productCreateUseCase.execute(input)).rejects.toThrow(
+            new Error("product: Name is required,product: Price must be greater than zero")
+        );
+    });
 });
