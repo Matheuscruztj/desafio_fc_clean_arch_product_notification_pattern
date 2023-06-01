@@ -59,7 +59,7 @@ describe("Unit test create product use case", () => {
         );
     });
 
-    it("should thrown an error when id and name are missing", async() => {
+    it("should thrown an error when id and name are empty", async() => {
         const productRepository = MockRepository();
         const productCreateUseCase = new CreateProductUseCase(productRepository);
 
